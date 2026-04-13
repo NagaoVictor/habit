@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <pthread.h>
+#include <pthread.h> // Compiler -pthread
 #include <stdlib.h>
 
 
