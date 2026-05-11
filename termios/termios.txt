@@ -1,0 +1,10 @@
+API padrao no linux.
+Importante para comunicacoes seriais e terminais
+
+Ex:
+  UART/serial
+  Comunicacao com microcontroladores
+  Console Linux
+  Raspberri Pi
+  Modens e dispositivos embarcados
+

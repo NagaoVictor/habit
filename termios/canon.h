@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <termios.h>
+
+
+char getch(){
+  // Resetar memoria da estrutura
+  struct termios old = {0};  
+  old.c_lflag &= ~ICANON; // Leitura sem dar enter
+  old.c_lflag &= ~ECHO; // Nao permitir output ao entrar um digito
+  old.c_cc[VMIN] = 1; // Limite de um caracter por envio
+  old.c_cc[VTIME] = 0; // Tempo em decimos de segundo ate o envio daquele buffer
+  old.
+
+
+
+}

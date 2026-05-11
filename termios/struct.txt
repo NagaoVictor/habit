@@ -1,0 +1,22 @@
+struct termios{
+  tcflag_t c_iflag; // input flags
+  tcflag_t c_oflag; // output flags
+  tcflag_t c_cflag; // control flags
+  tcflag_t c_lflag; // local flags
+  cc_t c_cc[NCCS]; // special characters
+};
+
+Ex:
+
+int fd = open("/dev/ttyUSB0", O_RDWR);
+
+struct termios tty;
+tcgetattr(fd, &tty);
+
+cfsetispeed(&tty, B115200); //Serial baud input comunication 
+cfsetospeed(&tty, B115200); //Serial baud output comunication
+
+tty.c_cflag |= (CLOCAL | CREAD);
+
+tcsetattr(fd, TCSANOW, &tty);
+

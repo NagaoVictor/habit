@@ -7,7 +7,7 @@
 int main(){
 	int servsock = socket(AF_INET, SOCK_STREAM, 0);
 
-	char message[1024] = "Message from tge server to the client \'Hey\' ";
+	char message[1024] = "Message from the server to the client \'Hey\' ";
 
 	struct sockaddr_in servAddr;
 	
