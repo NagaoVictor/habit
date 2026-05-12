@@ -27,7 +27,6 @@ int main(int argc, char*argv[]){
 
 	} */
 	
-	int fd_dest = open(argv[2], O_WRONLY);
 	char buff[1024];
 	
 	int  fd_ori = open(argv[1], O_RDONLY);
@@ -41,11 +40,11 @@ int main(int argc, char*argv[]){
 		perror("ファイルを読む際にエラーが発生しました\n");
 		exit(EXIT_FAILURE);
 	}
-	ssize_t escritor = write(fd_dest, buff, sizeof(buff));
+	ssize_t escritor = write(1, buff, leitor);
 	if (escritor == -1){
 		perror("ファイルを書き込む際にエラーが発生しました\n");
 		exit(EXIT_FAILURE);
 	}
 	close(fd_ori);
-	close(fd_dest);
+
 }
