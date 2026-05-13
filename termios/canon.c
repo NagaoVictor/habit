@@ -5,6 +5,10 @@
 #include <stdint.h>
 #include <unistd.h>
 
+//non-Canonical mode "Enter letter by letter without use enter keyboard command"
+
+
+
 int main(int argc, char * argv[]){
   char buff[1024];
   int fd;
