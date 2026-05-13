@@ -1,0 +1,100 @@
+Nível 1 - Fork Básico - Criando Pai e Filho
+O que ele faz?
+O processo principal chama fork().
+O kernel cria um processo filho.
+Pai e filho executam o mesmo código a partir da linha seguinte.
+
+Aplicação
+Entender a base de toda criação de processos no Unix/Linux.
+
+--------------------------------------------------------------------------
+Nível 2 - Exibindo PID e PPID
+O que ele faz?
+O pai e o filho imprimem seus identificadores.
+O filho mostra quem é seu pai (PPID).
+O pai recebe o PID do filho.
+
+Aplicação
+Diaginóstico e compreensão da árvore de processos.
+
+--------------------------------------------------------------------------
+Nível 3 - Pai Espera o Filho (wait())
+O que ele faz?
+O Filho execcuta primeiro.
+O pai fica bloqueado em wait().
+Após o término do filho, o pai continua.
+
+Aplicação
+Evita zombies e sincronizar processos.
+
+--------------------------------------------------------------------------
+Nível 4 - Criando Vários Filhos em Loop
+O que ele faz?
+O pai cria vários filhos.
+Cada filho executa uma tarefa e termina.
+O pai coleta todos com wait().
+
+Aplicação
+Executar tarefas independentes em paralelo.
+
+--------------------------------------------------------------------------
+Nível 5 - Filho Executa Outro Programa (exec())
+O que ele faz?
+O pai cria um filho.
+O filho substitui sua imagem de processo por outro programa.
+O pai pode aguardar o término.
+
+Aplicação
+Shells como o Bash executam comandos dessa forma.
+
+--------------------------------------------------------------------------
+Nível 6 - fork() Dentro de Outro fork()
+O que ele faz?
+Um fork() duplica o processo.
+Cada processo executa outra fork().
+O número total dobra novamente.
+
+Aplicação
+Estudar crescimento exponencial e árvores de processos.
+
+--------------------------------------------------------------------------
+Nível 7 - Árvore de Processos
+O que ele faz?
+Pai e filho criam novos filhos.
+A estrutura resultante é uma árvore.
+Cada processo possui seu próprio PID e PPID.
+
+Aplicação
+Modelar supervisores e sub-processos.
+
+--------------------------------------------------------------------------
+Nível 8 - Comunicação por Pipe
+O que ele faz?
+O pai escreve dados em um pipe.
+O filho lê esses dados.
+Ambos se comunicam pelo kernel.
+
+Aplicação
+Pipelines como ls | grep txt.
+
+--------------------------------------------------------------------------
+Nível 9 - Processo Daemon
+O que ele faz?
+O processo faz fork().
+O pai termina.
+O filho se desacopla do terminal com setsid().
+
+Aplicação
+Serviços do sistema.
+
+--------------------------------------------------------------------------
+Nível 10 - Double Fork
+O que ele faz?
+Primeiro fork() cria um filho.
+setsid() inicia uma nova sessão.
+Segundo fork() remove o processo da liderança da sessão.
+
+Aplicação
+Método clássico de daemonização.
+
+--------------------------------------------------------------------------
