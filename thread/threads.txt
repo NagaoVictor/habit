@@ -1,0 +1,96 @@
+Nível 1 - Criação de uma thread
+O que foi feito?
+Criamos uma thread com pthread_create() e aguardamos seu término com pthread_join().
+
+Aplicações
+Executar uma tarefa em paralelo.
+Separar interface e processamento.
+Primeiros testes com concorrência.
+
+-------------------------------------------------------------------------------------
+Nível 2 - Passagem de Argumentos
+O que foi feito?
+Passa um valor ára a thread usando o parâmetro void *arg.
+
+Aplicação
+IDs de threads.
+Estruturas de configuração.
+Parâmetros de processamento.
+
+-------------------------------------------------------------------------------------
+Nível 3 - Retorno de Valores
+O que foi feito?
+A thread retornou um ponteiro que foi recuperado com pthread_join().
+
+Aplicação
+Cálculo paralelos.
+Funções de processamento.
+Coleta de resultados.
+
+-------------------------------------------------------------------------------------
+Nível 4 - Múltiplas Threads
+O que foi feito?
+Criamos várias threads em um loop.
+
+Aplicação
+Processamento em lote.
+Divisão de trabalho.
+Renderização e simulações.
+
+-------------------------------------------------------------------------------------
+Nível 5 - Race condition
+O que foi feito?
+Duas thread alteraram a mesma variável sem proteção.
+
+Aplicação
+Demonstração clássica de erro de concorrência.
+Diagnóstico de bugs intermitentes.
+
+-------------------------------------------------------------------------------------
+Nível 6 - Mutex
+O que foi feito?
+Protegendo a região crítica com pthread_mutex_lock() e unlock().
+
+Aplicação
+Contadores.
+Estruturas de dados.
+Arquivos de log.
+
+-------------------------------------------------------------------------------------
+Nível 7 - Condition Variable
+O que foi feito?
+Uma thread esperou até outra sinalizar uma condição.
+
+Aplicação
+Espera por eventos.
+Sincronização entre produtor e consumidor.
+
+-------------------------------------------------------------------------------------
+Nível 8 - Producer / Consumer
+O que foi feito?
+Um produtor inseriu itens em um buffer; um consumidor os removeu.
+
+Aplicação
+Filas de tarefas.
+Streams de dados.
+Streams em tempo real.
+
+-------------------------------------------------------------------------------------
+Nível 9 - Thread Pool
+O que foi feito?
+Um conjunto fixo de threads processou várias tarefas.
+
+Aplicação
+Servidor web.
+Processamento assíncrono.
+Jobs em background.
+
+-------------------------------------------------------------------------------------
+Nível 10 - Read/Write Lock
+O que foi feito?
+Várias threads leram simultaneamente, enquanto a escrita foi exclusiva.
+
+Aplicação
+Caches.
+Configurações globais.
+Estruturas majoritariamente de leitura.

@@ -1,2 +1,8 @@
-O fork() cria o processo e o exit() o finaliza. durante a criacao do processo, o execve() sera chamado e ira resetar tudo o que o metodo possui registrado. O wait() sera importando para os processos durante o periodo em o processo pai morre antes do processo filho. Para evitar o processo morra antes, o wait espera o processo filho morrer.
+O fork() cria o processo e o exit() o finaliza.
+ durante a criacao do processo, o execve() sera
+ chamado e ira resetar tudo o que o metodo possui 
+registrado. O wait() sera importando para os 
+processos durante o periodo em o processo pai morre 
+antes do processo filho. Para evitar o processo morra
+ antes, o wait espera o processo filho morrer.
 
