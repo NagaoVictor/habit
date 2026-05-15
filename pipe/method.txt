@@ -1,0 +1,5 @@
+pipe() -> Channel creator
+fork() -> Process creator
+dup2() -> stdin/stdout/stderr redirection
+exec() -> Program execute
+wait() -> Synchronize
