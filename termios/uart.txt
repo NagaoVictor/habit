@@ -1,6 +1,0 @@
-Comunicacao de dois dispositivos por envio serial sem clock.
-A comunicacao devera previamente ser configurada com a taxa de transmissao (baud), em cada dispositivo.
-
-Baud mais comuns:
-  9600
-  115200
