@@ -7,7 +7,7 @@ void handler(int sig){
 }
 
 int main(){
-  signal(SIGINT, handler);
+  signal(SIGINT, handler); // Call the handle method if (Crtl + C) was invoked.
   while(1){
     printf("Rolling...\n");
     sleep(1);
