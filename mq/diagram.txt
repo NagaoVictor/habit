@@ -1,0 +1,95 @@
+Message queue diagrams
+
+Diagrama Conceitual de POSIX Message Queue
++------------------+                         +------------------+
+|   Processo A     |                         |   Processo B     |
+|   (Producer)     |                         |   (Consumer)     |
++------------------+                         +------------------+
+         |                                            ^
+         | mq_send("START")                            |
+         v                                            |
+   +--------------------------------------------------------+
+   |                POSIX Message Queue                     |
+   |                    /robot_queue                        |
+   |                                                        |
+   |   +-----------------------------------------------+    |
+   |   | Prioridade | Mensagem                         |    |
+   |   +-----------------------------------------------+    |
+   |   |    10      | "EMERGENCY_STOP"                 |    |
+   |   |     5      | "SET_SPEED 100"                  |    |
+   |   |     1      | "LOG_STATUS"                     |    |
+   |   +-----------------------------------------------+    |
+   |                                                        |
+   |   mq_curmsgs = 3                                        |
+   |   mq_maxmsg  = 10                                       |
+   |   mq_msgsize = 256                                      |
+   +--------------------------------------------------------+
+         |
+         | mq_receive()
+         v
++------------------------------+
+| Kernel entrega a mensagem    |
+| de maior prioridade primeiro |
++------------------------------+
+
+
+1. "LOG_STATUS"      prioridade 1
+2. "SET_SPEED 100"   prioridade 5
+3. "EMERGENCY_STOP"  prioridade 10
+
+1. EMERGENCY_STOP
+2. SET_SPEED 100
+3. LOG_STATUS
+-----------------------------------------------------------------------------------
+Fluxo Básico
+
+Processo A
+    |
+    | mq_send()
+    v
++--------------------+
+| Message Queue      |
+| armazenada         |
+| no kernel          |
++--------------------+
+    |
+    | mq_receive()
+    v
+Processo B
+
+-----------------------------------------------------------------------------------
+Com Múltiplos Consumidores
+                   +----------------+
+                   |  Producer      |
+                   +----------------+
+                           |
+                           v
+                 +---------------------+
+                 |   Message Queue     |
+                 +---------------------+
+                    /        |        \
+                   /         |         \
+                  v          v          v
+          +----------+ +----------+ +----------+
+          | Worker 1 | | Worker 2 | | Worker 3 |
+          +----------+ +----------+ +----------+
+
+-----------------------------------------------------------------------------------
+Message Queue + Shared Memory
+Camera Process
+     |
+     | grava frame
+     v
++----------------------+
+| Shared Memory        |
+| frame_buffer         |
++----------------------+
+     |
+     | mq_send("FRAME_READY")
+     v
++----------------------+
+| Message Queue        |
++----------------------+
+     |
+     v
+Vision Process

@@ -1,0 +1,174 @@
+1) O que é um Processo
+Um processo é uma instância de um programa em execução.
+
+Ele possui:
+
+PID (Process ID)
+PPID (Parent Process ID)
+Espaço de memória virtual
+File descriptors abertos
+Variáveis de ambiente
+Diretório atual
+Credenciais (UID/GID)
+Máscara de sinais
+Exemplo
+
+O programa Bash em execução é um processo.
+
+---------------------------------------------------
+2) Criação com fork()
+
+fork()→pai+filho
+
+O fork() duplica o processo atual.
+
+O filho recebe:
+
+cópia lógica da memória (copy-on-write),
+descritores de arquivo abertos,
+ambiente e diretório atual.
+
+---------------------------------------------------
+3. Substituição com exec()
+execlp("ls", "ls", "-l", NULL);
+
+O processo mantém o mesmo PID, mas passa a executar outro programa.
+
+---------------------------------------------------
+4. Sincronização com wait()
+wait(NULL);
+
+O pai coleta o status de saída do filho.
+
+---------------------------------------------------
+5. Estados do Processo
+R — Running
+S — Sleeping
+D — Uninterruptible sleep
+T — Stopped
+Z — Zombie
+
+Veja com:
+
+ps -o pid,ppid,state,cmd
+
+---------------------------------------------------
+6. File Descriptors
+
+Todo processo começa com:
+
+0 — stdin
+1 — stdout
+2 — stderr
+
+Esses descritores são herdados após fork().
+
+---------------------------------------------------
+7. Redirecionamento com dup2()
+dup2(fd, STDOUT_FILENO);
+
+Permite enviar saída para arquivo, pipe ou socket.
+
+---------------------------------------------------
+8. Pipes
+pipe(fd);
+
+Canal unidirecional para comunicação entre processos.
+
+---------------------------------------------------
+9. Sinais
+
+Eventos assíncronos enviados pelo kernel ou por outros processos.
+
+Exemplos:
+
+SIGINT
+SIGTERM
+SIGCHLD
+SIGKILL
+
+---------------------------------------------------
+10. Zombies
+
+Processos já finalizados cujo status ainda não foi coletado.
+
+---------------------------------------------------
+11. Daemons
+
+Processos em segundo plano desacoplados do terminal.
+
+Ferramenta principal:
+
+setsid()
+
+---------------------------------------------------
+12. Sessões e Grupos de Processos
+
+Fundamentais para:
+
+controle de terminal,
+job control,
+shells.
+
+---------------------------------------------------
+13. Comunicação entre Processos (IPC)
+pipes
+FIFOs
+shared memory
+message queues
+sockets
+
+---------------------------------------------------
+14. Permissões e Credenciais
+getuid()
+geteuid()
+setuid()
+
+---------------------------------------------------
+15. Escalonamento
+
+O kernel decide quando cada processo executa.
+
+---------------------------------------------------
+16. Memória Virtual
+
+Cada processo possui:
+
+text
+data
+heap
+stack
+
+---------------------------------------------------
+17. Variáveis de Ambiente
+getenv()
+setenv()
+
+---------------------------------------------------
+18. Diretório Atual
+getcwd()
+chdir()
+
+---------------------------------------------------
+19. Syscalls
+
+Toda interação com o kernel ocorre por syscalls:
+
+fork()
+execve()
+read()
+write()
+open()
+
+---------------------------------------------------
+20. Ferramentas de Diagnóstico
+strace
+lsof
+ps
+top
+htop
+
+---------------------------------------------------
+Fórmula Mental Fundamental
+
+fork()+exec()+wait()=Base de processos Unix

@@ -1,0 +1,30 @@
+Uma thread permite que uma tarefa aconteca ao mesmo tempo que outra, dentro do mesmo processo
+
+Uma funcao normal executa em sequencia, a thread faz tudo paralelamente.
+
+Cria um novo fluxo de execucao e comeca a executar a partir dele
+pthread_create(&thread,b,method,&arg)
+b = Parametro de configuracao da thread
+pthread_t tid;
+Ex1: pthread_create(&tid, NULL, method, &arg)
+Ex2: pthread_create(&tid, NULL, method, &)
+
+Espere essa thread terminar e me entregue o valor que ela retornou
+phtread_join(thread, void ** local de recebimento)
+Ex: 
+
+
+Nivel1.c
+worker, possui um ponteiro void no metodo e no argumento para simular um especie de sobrecarga.
+
+
+Ele criou apenas uma thread, para executar o metodo worker. Essa thread nao tem efeito sendo unica, ja que a thread tem o maior objeto de ser multitarefas. Mas ela pode executar caracteristicas dela mesmo.
+
+
+Nivel2.c
+Aqui, ele estende o Nivel1.c adicionando um argumento no metodo worker.
+OBS: O worker no Nivel1.c nao usou nenhum argumento alem do metodo.
+
+
+Nivel3.c
+
