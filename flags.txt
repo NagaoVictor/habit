@@ -1,0 +1,31 @@
+(CONTROL FLAGS)
+
+ENABLE
+DISABLE
+RESET
+START
+STOP
+PAUSE
+RUN
+SLEEP
+WAKEUP
+POWERDOWN
+RESTART
+INITIALIZE
+-----------------------------------------------
+STATUS FLAGS
+
+READY
+BUSY
+IDLE
+RUNNING
+DONE
+COMPLETE
+FINISHED
+ACTIVE
+INACTIVE
+ONLINE
+OFFLINE
+
+-----------------------------------------------
+
