@@ -49,7 +49,7 @@ void device_set_speed(REG32 *reg, uint8_t speed){
 uint8_t device_get_speed(REG32 reg){
   return (reg & SPEED_MASK) >> SPEED_SHIFT;
 }
-
+// Interrupt Request
 void irq_set(REG32 *reg){
   *reg |= IRQ_MASK;
 }
