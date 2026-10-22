@@ -4,6 +4,9 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
+#include <errno.h>
+#include <string.h>
+
 
 #define I2C_BUS "/dev/i2c-1" // Caminho padrão do barramento I2C no Linux
 #define TARGET_ADDR 0x68     // Exemplo: Endereço I2C típico de um acelerômetro MPU6050
@@ -31,7 +34,7 @@ int main() {
 
     // 3. Escreve qual registrador interno queremos consultar (usando a syscall write padrão)
     if (write(file_fd, &reg_to_read, 1) != 1) {
-        perror("Erro ao enviar o endereço do registrador");
+        fprintf(stderr, "Erro no write: %s (codigo %d)\n", strerror(errno), errno);
     } else {
         // 4. Lê o byte de resposta do registrador do chip (usando a syscall read padrão)
         if (read(file_fd, &data_buffer, 1) != 1) {
