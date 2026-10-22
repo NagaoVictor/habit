@@ -45,7 +45,7 @@ int main(){
   printf("The coast: %.2f\n", custo);
 
   // After updated!
-  printf("-----------------------------------------------------------------------");
+  printf("-----------------------------------------------------------------------\n");
   weight_update(&new_weight, custo, x, lr);
   new_node = node(x, new_weight);
   bias(&new_node);

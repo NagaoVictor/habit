@@ -9,6 +9,7 @@ int main(){
   // test bit 3
   if (x & (1 << 3))
   {
+    printf("%d\n", x);
     printf("Connected\n");
   }
 
