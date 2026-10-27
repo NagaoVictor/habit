@@ -56,6 +56,21 @@ void oled_init() {
     oled_command(0xAF); // Display ON
 }
 
+void oled_enviar_dados(unsigned char *dados, int tamanho) {
+    selecionar_dispositivo(OLED_ADDR);
+    
+    // Precisamos alocar um buffer temporário que leve o 0x40 seguido dos dados
+    unsigned char *buffer = malloc(tamanho + 1);
+    buffer[0] = 0x40; // Co-byte: indica que o que vem a seguir são DADOS de pixels
+    for (int i = 0; i < tamanho; i++) {
+        buffer[i + 1] = dados[i];
+    }
+    
+    write(i2c_fd, buffer, tamanho + 1);
+    free(buffer);
+}
+
+
 int main() {
     // 1. Abre o barramento I2C do Linux
     i2c_fd = open(I2C_DEV, O_RDWR);
@@ -67,6 +82,10 @@ int main() {
     printf("Inicializando o OLED SSD1306...\n");
     oled_init();
     printf("OLED inicializado com sucesso!\n");
+
+
+    // Exemplo simplificado das 5 colunas de pixels que formam a letra 'A'
+    unsigned char letra_A[5] = {0x7E, 0x11, 0x11, 0x11, 0x7E};
 
     close(i2c_fd);
     return 0;
